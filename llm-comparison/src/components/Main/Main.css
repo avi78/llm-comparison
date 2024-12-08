@@ -12,9 +12,23 @@
     padding: 20px;
     color: #585858;
 }
-.main .nav img{
+.main .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.main .nav img {
     width: 40px;
     border-radius: 50%;
+}
+.model-dropdown {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #585858;
+    cursor: pointer;
 }
 .main-container {
     max-width: 900px;
@@ -31,36 +45,6 @@
     background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
-    gap: 15px;
-    padding: 20px;
-}
-.card {
-    height: 200px;
-    padding: 15px;
-    background-color: #f0f4f9;
-    border-radius: 10px;
-    position: relative;
-    cursor: pointer;
-}
-.card:hover {
-    background-color: #dfe4ea;
-}
-.card p {
-    color: #585858;
-    font-size: 17px;
-}
-.card img {
-    width: 35px;
-    padding: 5px;
-    position: absolute;
-    background-color: white;
-    border-radius: 20px;
-    bottom: 10px;
-    right: 10px;
 }
 .main-bottom {
     position: absolute;
@@ -91,7 +75,6 @@
     display: flex;
     gap: 15px;
 }
-
 .search-box img {
     width: 24px;
     cursor: pointer;
@@ -107,8 +90,8 @@
     max-height: 70vh;
     overflow-y: scroll;
 }
-.result::-webkit-scrollbar{
-    display:none;
+.result::-webkit-scrollbar {
+    display: none;
 }
 .result-title {
     margin: 40px 0px;
@@ -142,29 +125,41 @@
 }
 @keyframes loader {
     0% {
-        background-position: -800px 0
+        background-position: -800px 0;
     }
     100% {
-        background-position: 800px 0
+        background-position: 800px 0;
     }
 }
-.result-data p{
+.result-data p {
     font-size: 17px;
     font-weight: 300;
     line-height: 1.8;
 }
-@media (max-width:600px) {
-    .main-bottom input{
+@media (max-width: 600px) {
+    .main-bottom input {
         flex: none;
         width: 140px;
     }
-    .main-bottom img{
+    .main-bottom img {
         width: 20px;
     }
-    .search-box{
+    .search-box {
         padding: 5px 10px;
     }
-    .search-box div{
+    .search-box div {
         gap: 5px;
     }
 }
+.dropdown {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dropdown select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
