@@ -25,6 +25,9 @@ By providing a user-friendly interface, the app helps to evaluate and compare th
 You can access the live version of the app here:  
 [Gemini LLM Comparison App](https://llm-comparison-snj2-j3diczoub-akrutis-projects.vercel.app)
 
+Live video:
+[Youtube Link](https://youtu.be/b4gUs5U4XZI)
+
 ---
 
 ## Installation
