@@ -11,14 +11,28 @@ const Main = () => {
     loading,
     resultData,
     setInput,
-    input
+    input,
+    setRecentPrompt
   } = useContext(Context);
+
+  // State to track if the user is editing
+  const [isEditing, setIsEditing] = useState(false);
 
   // Handle keypress for the input field
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && input) {
       onSent();
     }
+  };
+
+  const handleEdit = () => {
+    setIsEditing(true);
+    setInput(recentPrompt);
+  };
+
+  const handleSave = () => {
+    setIsEditing(false);
+    onSent(input);
   };
 
   return (
@@ -40,6 +54,7 @@ const Main = () => {
             <div className='result-title'>
               <img src={assets.user_icon} alt="" />
               <p>{recentPrompt}</p>
+              <button className="edit-button" onClick={handleEdit}>Edit</button>
             </div>
             <div className="result-data">
               <img src={assets.gemini_icon} alt="" />
@@ -55,12 +70,23 @@ const Main = () => {
             </div>
           </div>
         ) : (
-          <>
-            <div className="greet">
-              <p><span>Hello, Dev.</span></p>
-              <p>How can I help you today?</p>
-            </div>
-          </>
+          <div className="greet">
+            <p><span>Hello, Dev.</span></p>
+            <p>How can I help you today?</p>
+          </div>
+        )}
+
+        {isEditing && (
+          <div className="edit-input-container">
+            <input
+              className="edit-input"
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+              value={input}
+              type="text"
+            />
+            <button className="edit-button" onClick={handleSave}>Save</button>
+          </div>
         )}
 
         <div className="main-bottom">
