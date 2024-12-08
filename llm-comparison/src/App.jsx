@@ -1,10 +1,14 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import Sidebar from './components/Sidebar/Sidebar'
+import Main from './components/Main/Main'
 
-function App() {
+const App = () => {
+
 
   return (
     <>
-      Hello
+      <Sidebar/>
+      <Main/>  
     </>
   )
 }
