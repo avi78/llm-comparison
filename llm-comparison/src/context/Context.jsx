@@ -11,6 +11,7 @@ const ContextProvider = (props) => {
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("");
+    const [selectedModel, setSelectedModel] = useState("gemini-1.0-pro"); // Default model
 
     function delayPara(index, nextWord) {
         setTimeout(function () {
@@ -24,12 +25,12 @@ const ContextProvider = (props) => {
         setShowResult(true);
         let response;
         if (prompt !== undefined) {
-            response = await runChat(prompt);
+            response = await runChat(prompt, selectedModel); // Pass the selected model
             setRecentPrompt(prompt);
         } else {
             setPrevPrompts(prev => [...prev, input]);
             setRecentPrompt(input);
-            response = await runChat(input);
+            response = await runChat(input, selectedModel); // Pass the selected model
         }
         let responseArray = response.split('**');
         let newArray = "";
@@ -40,7 +41,6 @@ const ContextProvider = (props) => {
                 newArray += "<b>" + responseArray[i] + "</b>";
             }
         }
-        console.log(newArray);
         responseArray = newArray.split('*').join("</br>").split(" ");
         for (let i = 0; i < responseArray.length; i++) {
             const nextWord = responseArray[i];
@@ -66,7 +66,9 @@ const ContextProvider = (props) => {
         resultData,
         input,
         setInput,
-        newChat
+        newChat,
+        selectedModel, // Add selectedModel to context
+        setSelectedModel, // Add setSelectedModel to context
     }
 
     return (

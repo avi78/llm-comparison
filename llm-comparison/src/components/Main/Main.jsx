@@ -12,7 +12,9 @@ const Main = () => {
     resultData,
     setInput,
     input,
-    setRecentPrompt
+    setRecentPrompt,
+    setSelectedModel, // New method from context
+    selectedModel, // New state from context
   } = useContext(Context);
 
   // State to track if the user is editing
@@ -35,16 +37,20 @@ const Main = () => {
     onSent(input);
   };
 
+  const handleModelChange = (e) => {
+    setSelectedModel(e.target.value); // Update the model name
+  };
+
   return (
     <div className='main'>
       <div className="nav">
         <p>Gemini</p>
         <div className="dropdown">
           <img src={assets.user_icon} alt="" />
-          <select>
-            <option value="default">Gemini 1.0 Pro</option>
-            <option value="advanced">Gemini 1.5 Flash</option>
-            <option value="creative">Gemini 1.5 Flash-8b</option>
+          <select onChange={handleModelChange} value={selectedModel}>
+            <option value="gemini-1.0-pro">Gemini 1.0 Pro</option>
+            <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+            <option value="gemini-1.5-flash-8b">Gemini 1.5 Flash-8b</option>
           </select>
         </div>
       </div>
